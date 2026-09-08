@@ -1,0 +1,5 @@
+huggingface-hub>=0.34.0
+matplotlib>=3.8.0
+opencv-python>=5.0.0
+psutil>=5.9.0
+tensorboard>=2.15.0

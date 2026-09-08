@@ -1,0 +1,36 @@
+# Local MCP and agent tooling
+.venv-mcp/
+.dev/
+tools/dev/dev_environment.local.bat
+.codex/config.toml
+
+# Python tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Build and local runtime output
+build/
+dist/
+*.egg-info/
+
+# Local user/agent file exchange
+incoming/
+temp/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# User-supplied MyTimeMachine checkpoints
+models/mytimemachine/**/*.pt
+models/mytimemachine/**/*.pth
+models/mytimemachine/**/*.ckpt
+models/mytimemachine/**/*.safetensors
+models/mytimemachine/**/*.onnx

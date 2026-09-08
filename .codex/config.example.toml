@@ -1,0 +1,19 @@
+# Copy the relevant values to .codex/config.toml and use absolute local paths.
+[mcp_servers.comfy_mcp]
+command = "C:\\Windows\\System32\\cmd.exe"
+args = ["/d", "/c", "<PROJECT_ROOT>\\tools\\dev\\start_comfy_mcp.bat"]
+cwd = "<PROJECT_ROOT>"
+startup_timeout_sec = 30
+tool_timeout_sec = 600
+default_tools_approval_mode = "writes"
+disabled_tools = [
+  "install_node",
+  "update_comfyui",
+  "switch_comfyui_version",
+  "launch_comfyui",
+  "stop_comfyui",
+  "restart_comfyui",
+  "download_model",
+  "partner_generate",
+  "node_dependencies",
+]

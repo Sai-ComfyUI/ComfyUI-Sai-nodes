@@ -1,0 +1,20 @@
+[project]
+name = "comfyui-sai-nodes"
+version = "0.1.0"
+description = "ComfyUI V3 nodes for conditioning, latent upscaling, re-ageing, and image comparison"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Sai-ComfyUI" },
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+]
+
+[project.urls]
+Repository = "https://github.com/Sai-ComfyUI/ComfyUI-Sai-nodes"
+Documentation = "https://github.com/Sai-ComfyUI/ComfyUI-Sai-nodes#readme"
+Issues = "https://github.com/Sai-ComfyUI/ComfyUI-Sai-nodes/issues"

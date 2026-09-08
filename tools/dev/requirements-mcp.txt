@@ -1,0 +1,3 @@
+# Agent-side tooling only. Do not install this file into ComfyUI's embedded Python.
+comfy-mcp==0.10.0
+comfy-cli>=1.14.0,<2
