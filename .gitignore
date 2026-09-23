@@ -34,3 +34,9 @@ models/mytimemachine/**/*.pth
 models/mytimemachine/**/*.ckpt
 models/mytimemachine/**/*.safetensors
 models/mytimemachine/**/*.onnx
+
+# User-supplied LumaFlux adapter checkpoints
+models/lumaflux/**/*.safetensors
+models/lumaflux/**/*.ckpt
+models/lumaflux/**/*.pt
+models/lumaflux/**/*.pth

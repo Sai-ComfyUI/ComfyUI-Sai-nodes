@@ -38,6 +38,54 @@ The model is for FLUX.1's 16-channel latent format and intentionally rejects
 FLUX.2 latents. See [loader](LoadLuaFluxModel_Sai.md) and
 [upscaler](LuaFluxLatentUpscale_Sai.md) references.
 
+## LumaFlux SDR to HDR
+
+```text
+Load Diffusion Model ─ MODEL ─┐
+VAE Loader ─────────── VAE ───┼─ Apply LumaFlux Adapter Ψ ─ LUMAFLUX_MODEL
+CLIP Vision Loader ─ CLIP_VISION ┘                         │
+SDR IMAGE ─────────────────────────────────────────────────┴─ LumaFlux SDR to HDR Ψ
+                                                                 │ HDR_IMAGE
+                                                                 ├─ HDR to SDR Preview Ψ
+                                                                 └─ Save HDR Image Ψ
+
+Load Video ─ VIDEO ────────────────────────────────────────┴─ LumaFlux SDR Video to HDR Ψ
+                                                                 │ HDR_VIDEO_STREAM
+                                                                 └─ Save HDR10 Video Ψ
+```
+
+Use FLUX.1-dev (NVFP4, FP8, or BF16), Flux `ae.safetensors`, SigLIP SO400M
+patch14-384, and a released LumaFlux adapter. The source IMAGE is an ordinary
+BT.709 SDR image; it does not need to be HDR. LumaFlux requires dimensions
+divisible by 16. Both solver nodes expose the same `resize_mode`: `none` is
+strict, `crop` (default) edge-pads and restores the source size, and `resize`
+resamples to the nearest multiples of 16. The node displays every geometry
+operation. Eight steps and bridge noise 0.05 reproduce the upstream inference
+defaults.
+
+`HDR_IMAGE` stores PQ code values plus BT.2020 and 1000-nit metadata. It is
+intentionally distinct from an ordinary `IMAGE`, so metadata cannot be silently
+lost. The preview node performs BT.2446 Method C tone mapping to BT.709 and is
+not an HDR export path.
+
+For still masters, **Save HDR Image Ψ** defaults to lossless float32 OpenEXR
+containing normalized linear BT.2020 RGB (`1.0` equals the mastering peak).
+It can alternatively write the upstream-compatible lossless 16-bit PNG that
+stores PQ/BT.2020 code values and embeds a `cICP` HDR declaration. A JSON
+sidecar records the transfer, primaries, white point, and mastering peak. Lossy
+10-bit 4:2:0 AVIF is intentionally not used as the still-master format.
+
+For video, connect ComfyUI's native **Load Video** output directly to
+**LumaFlux SDR Video to HDR Ψ**. The node creates a lazy `HDR_VIDEO_STREAM`;
+it does not materialize an `IMAGE` batch. **Save HDR10 Video Ψ** consumes that
+stream frame by frame, reusing the first bridge-noise tensor and carrying the
+previous applied RQS spline parameters forward with the upstream default 0.8
+EMA. The single `shared_noise` switch enables or disables that whole temporal
+bundle in both solver nodes. The saver writes HEVC Main10 `yuv420p10le` with
+PQ, BT.2020, 1000-nit mastering display, MaxCLL/MaxFALL metadata, and optionally
+preserved source audio; it can instead stream to float32 EXR or 16-bit PQ PNG
+sequences.
+
 ## MyTimeMachine re-ageing
 
 The recommended portrait workflow is:

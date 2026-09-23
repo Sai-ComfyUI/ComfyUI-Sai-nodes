@@ -23,6 +23,13 @@ from .nodes.image.labeled_collage import LabeledImageCollage
 from .nodes.latent.lua_flux import LoadLuaFluxModel, LuaFluxLatentUpscale
 from .nodes.moonland.upload_image import MoonlandEnsureImageFileSai, MoonlandEnsureImageResourceSai
 from .nodes.moonland.resolve_tool import MoonlandResolveToolSai
+from .nodes.sdr_to_hdr.lumaflux import (
+    ApplyLumaFluxAdapter,
+    HdrToSdrPreview,
+    LumaFluxSdrToHdr,
+    SaveHdrImage,
+)
+from .nodes.sdr_to_hdr.lumaflux_video import LumaFluxSdrVideoToHdr, SaveHdr10Video
 from .server.restart import register_restart_route
 from .server.moonland_bridge import register_moonland_bridge_routes
 
@@ -49,6 +56,12 @@ class SaiNodesExtension(ComfyExtension):
             MoonlandEnsureImageResourceSai,
             MoonlandEnsureImageFileSai,
             MoonlandResolveToolSai,
+            ApplyLumaFluxAdapter,
+            LumaFluxSdrToHdr,
+            LumaFluxSdrVideoToHdr,
+            HdrToSdrPreview,
+            SaveHdrImage,
+            SaveHdr10Video,
         ]
 
     @override

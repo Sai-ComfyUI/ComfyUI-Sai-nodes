@@ -1,7 +1,8 @@
 # ComfyUI-Sai-nodes
 
-A ComfyUI V3 custom-node collection for conditioning, latent upscaling, face
-alignment, personalized re-ageing, and labeled image comparison.
+A ComfyUI V3 custom-node collection for conditioning, SDR-to-HDR conversion,
+latent upscaling, face alignment, personalized re-ageing, and labeled image
+comparison.
 
 [繁體中文說明](README.zh-TW.md)
 
@@ -11,6 +12,10 @@ alignment, personalized re-ageing, and labeled image comparison.
   models and passes through the VAE.
 - **LUA FLUX** loads the official LUA-FLUX checkpoint and performs x2 or x4
   latent upscaling for FLUX.1.
+- **LumaFlux** reuses native ComfyUI FLUX.1-dev, Flux AE, and SigLIP Vision
+  models for prompt-free SDR BT.709 to 1000-nit HDR PQ/BT.2020 conversion,
+  including continuity-aware streaming video to metadata-complete HEVC Main10,
+  with float32 linear OpenEXR and lossless 16-bit PQ PNG master outputs.
 - **MyTimeMachine** provides model loading, FFHQ face alignment/restoration,
   general or personalized facial re-ageing, and personalized training.
 - **Labeled Image Collage Ψ** builds labeled comparison grids with wrapping,
@@ -55,6 +60,9 @@ Model weights are intentionally not stored in this Git repository.
 
 - LUA-FLUX can be downloaded by its loader node from the official
   [`vaskers5/LUA-FLUX`](https://huggingface.co/vaskers5/LUA-FLUX) repository.
+- LumaFlux adapters belong under `ComfyUI/models/lumaflux/` or this custom
+  node's `models/lumaflux/` directory. FLUX.1-dev, Flux AE, and SigLIP Vision
+  stay in ComfyUI's standard model directories.
 - MyTimeMachine weights belong under
   `ComfyUI-Sai-nodes/models/mytimemachine/`. Use the original projects as the
   primary sources. A verified mirror is available at

@@ -62,3 +62,26 @@ by the nodes.
 [`vaskers5/LUA-FLUX`](https://huggingface.co/vaskers5/LUA-FLUX) repository into
 ComfyUI's standard `models/latent_upscale_models` directory. It can also load an
 existing file from that directory.
+
+## LumaFlux SDR to HDR
+
+The native workflow deliberately reuses ComfyUI loaders. Place files as shown:
+
+```text
+ComfyUI/models/
+├── diffusion_models/flux.1/flux1-dev-nvfp4.safetensors  # or FP8/BF16 dev
+├── vae/ae.safetensors
+├── clip_vision/siglip-so400m-patch14-384.safetensors
+└── lumaflux/lumaflux-main.safetensors
+```
+
+The adapter may alternatively be placed in
+`ComfyUI-Sai-nodes/models/lumaflux/`. Use **Load Diffusion Model**, **VAE
+Loader**, and **CLIP Vision Loader**, then connect all three to **Apply LumaFlux
+Adapter Ψ**. FLUX.1 Schnell and text `CLIP` inputs are not compatible or
+required. NVFP4 is supported on compatible ComfyUI/NVIDIA hardware; users with
+more memory can replace only the FLUX.1-dev checkpoint with FP8 or BF16.
+
+LumaFlux outputs a typed PQ/BT.2020 payload. **HDR to SDR Preview Ψ** is only
+for ordinary display and must not be treated as the HDR master.
+HDR10 video delivery still requires a 10-bit encoder and mastering metadata.

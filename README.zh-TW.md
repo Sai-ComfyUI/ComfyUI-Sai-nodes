@@ -1,7 +1,8 @@
 # ComfyUI-Sai-nodes
 
 這是一組使用 ComfyUI V3 API 的自訂節點，包含多參考圖 conditioning、FLUX.1 latent
-放大、FFHQ 人臉對齊、MyTimeMachine 年齡轉換與個人化訓練，以及附標籤的圖片比較拼貼。
+放大、LumaFlux SDR 轉 HDR、FFHQ 人臉對齊、MyTimeMachine 年齡轉換與個人化訓練，
+以及附標籤的圖片比較拼貼。
 
 [English README](README.md)
 
@@ -35,6 +36,8 @@ python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\ComfyUI-Sai-nod
 
 - LUA-FLUX loader 可以從原作者的
   [`vaskers5/LUA-FLUX`](https://huggingface.co/vaskers5/LUA-FLUX) 自動下載。
+- LumaFlux adapter checkpoint 請放在 `ComfyUI/models/lumaflux/`；FLUX.1-dev、
+  Flux AE 與 SigLIP 則分別使用 ComfyUI 原生的 diffusion model、VAE 與 CLIP Vision loader 載入。
 - MyTimeMachine 模型請放在
   `ComfyUI-Sai-nodes/models/mytimemachine/`。文件會優先列出原專案或模型作者的下載來源；
   [`sailing/ComfyUI-Sai-nodes_Models`](https://huggingface.co/sailing/ComfyUI-Sai-nodes_Models/tree/main/mytimemachine)
@@ -47,6 +50,9 @@ python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\ComfyUI-Sai-nod
 
 - **Multi Reference Latent Ψ**：整理多張參考圖供 edit model 使用。
 - **LUA FLUX**：載入官方模型，對 FLUX.1 latent 進行 x2／x4 放大。
+- **LumaFlux**：使用原生 ComfyUI 模型 loader 將一般 SDR 圖片轉為 PQ／BT.2020 HDR，
+  並提供多種 SDR 預覽、float32 線性 EXR、具 cICP 的 16-bit PQ PNG，以及具序列連續性、
+  逐幀串流與 HDR10 mastering metadata 的 HEVC Main10 影片輸出。
 - **MyTimeMachine**：FFHQ 人臉對齊與貼回、一般及個人化年齡轉換、個人化訓練。
 - **Labeled Image Collage Ψ**：製作附標籤、可換行與儲存版型的比較拼貼。
 - **Moonland Bridge**：透過已配對且登入的瀏覽器分頁，唯讀解析既有 Lab 工具 contract，

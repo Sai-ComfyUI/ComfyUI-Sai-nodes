@@ -25,6 +25,20 @@ architecture license text is retained in
 [`nodes/latent/LUA_LICENSE`](nodes/latent/LUA_LICENSE). The model checkpoint is
 downloaded separately and is not included in this repository.
 
+## LumaFlux
+
+`vendor/lumaflux_native/` is a modified native-ComfyUI inference port derived
+from [`shreshthsaini/LumaFlux`](https://github.com/shreshthsaini/LumaFlux),
+source revision `bfd2f0eb4c53104f5c61ad85f728c6e0e2bd678b`. It is used under the
+Apache License 2.0; port details are retained in
+[`vendor/lumaflux_native/NOTICE.md`](vendor/lumaflux_native/NOTICE.md), and the
+complete Apache 2.0 license text is retained in
+[`nodes/latent/LUA_LICENSE`](nodes/latent/LUA_LICENSE).
+
+LumaFlux adapter weights and FLUX.1-dev weights are downloaded separately and
+are not included in this repository. FLUX.1-dev retains its upstream
+non-commercial model license.
+
 ## OpenCV Zoo YuNet
 
 The YuNet detector model is downloaded separately from
