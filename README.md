@@ -15,6 +15,9 @@ alignment, personalized re-ageing, and labeled image comparison.
   general or personalized facial re-ageing, and personalized training.
 - **Labeled Image Collage Ψ** builds labeled comparison grids with wrapping,
   typography, transparency, and browser-local named presets.
+- **Moonland Bridge** resolves existing Lab tool contracts and reuses or uploads
+  image resources through a paired signed-in browser tab without exporting
+  cookies. Contract resolution is read-only and cannot submit generations.
 - A frontend restart action is available for supervisors that restart ComfyUI
   after exit code `75`.
 

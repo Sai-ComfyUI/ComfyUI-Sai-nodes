@@ -1,0 +1,8 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+body { margin: 0; min-width: 320px; }
+main { display: grid; gap: 12px; padding: 16px; }
+h1, p { margin: 0; }
+label { display: grid; gap: 6px; font-size: 13px; }
+input, button { box-sizing: border-box; min-height: 36px; width: 100%; }
+.status { border-radius: 6px; background: color-mix(in srgb, CanvasText 8%, Canvas); padding: 8px; font-size: 13px; }
+.note { color: GrayText; font-size: 12px; }

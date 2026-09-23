@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moonland Bridge</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Moonland Bridge</h1>
+      <p id="moonland-status" class="status">Checking Moonland...</p>
+      <label>ComfyUI URL<input id="comfy-url" type="url" placeholder="http://127.0.0.1:9527" /></label>
+      <label>One-time pairing code<input id="pairing-code" inputmode="numeric" maxlength="6" autocomplete="off" /></label>
+      <button id="connect" type="button">Connect</button>
+      <p id="bridge-status" class="status">Not connected</p>
+      <p class="note">Moonland cookies are never sent to or stored by ComfyUI.</p>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

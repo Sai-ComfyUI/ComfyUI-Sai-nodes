@@ -21,7 +21,10 @@ from .nodes.image.face_reframe import (
 )
 from .nodes.image.labeled_collage import LabeledImageCollage
 from .nodes.latent.lua_flux import LoadLuaFluxModel, LuaFluxLatentUpscale
+from .nodes.moonland.upload_image import MoonlandEnsureImageFileSai, MoonlandEnsureImageResourceSai
+from .nodes.moonland.resolve_tool import MoonlandResolveToolSai
 from .server.restart import register_restart_route
+from .server.moonland_bridge import register_moonland_bridge_routes
 
 
 WEB_DIRECTORY = "./web"
@@ -43,11 +46,15 @@ class SaiNodesExtension(ComfyExtension):
             LabeledImageCollage,
             LoadLuaFluxModel,
             LuaFluxLatentUpscale,
+            MoonlandEnsureImageResourceSai,
+            MoonlandEnsureImageFileSai,
+            MoonlandResolveToolSai,
         ]
 
     @override
     async def on_load(self) -> None:
         register_restart_route()
+        register_moonland_bridge_routes()
 
 
 async def comfy_entrypoint() -> SaiNodesExtension:

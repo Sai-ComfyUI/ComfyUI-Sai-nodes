@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "canonicalUrl": "https://moonland.ai/w/purple-bright-coyote/lab?t=m83w4r7zr9iic31mm7kch6vb&g=kzbiddbo73fh4m33k1i3byev",
+    "resolvedAt": "2026-09-22T00:00:00.000Z",
+    "contractHash": "b9665381ef0524988c226effce681bf8f884591cbab920ccc0eeec8e8fe19fc1"
+  },
+  "workspace": { "id": "cmthzpmu3015h01s66hnj3wr1", "slug": "purple-bright-coyote" },
+  "lab": {
+    "topicId": "m83w4r7zr9iic31mm7kch6vb",
+    "stepId": "jctutenh4ssm13h0xzgalxd0",
+    "generationId": "kzbiddbo73fh4m33k1i3byev"
+  },
+  "target": {
+    "id": "aio-krea2",
+    "contractRevision": 7,
+    "displayName": "Krea 2",
+    "outputModality": "IMAGE"
+  },
+  "fields": [
+    { "id": "prompt", "type": "string", "required": true, "maxLength": 8000 },
+    { "id": "aspectRatio", "type": "enum", "required": false, "options": ["16:9", "1:1", "3:4"] },
+    { "id": "inputImage", "type": "resource", "required": false }
+  ],
+  "resourceSlots": [
+    {
+      "id": "inputImage",
+      "mediaType": "IMAGE",
+      "purposes": [],
+      "minCount": 0,
+      "maxCount": 1,
+      "acceptedContentTypes": ["image/jpeg", "image/png", "image/webp"],
+      "maxBytes": 2621440,
+      "normalizationProfile": "moonland-original-v1",
+      "uploadMode": "single"
+    }
+  ],
+  "pricing": { "estimatedPoints": 28, "currency": "POINT" }
+}

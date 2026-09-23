@@ -1,0 +1,89 @@
+[
+  {
+    "name": "krea2-image",
+    "pageUrl": "https://moonland.ai/w/purple-bright-coyote/lab?t=m83w4r7zr9iic31mm7kch6vb&g=kzbiddbo73fh4m33k1i3byev",
+    "request": {
+      "url": "https://moonland.ai/w/purple-bright-coyote/lab?g=kzbiddbo73fh4m33k1i3byev&t=m83w4r7zr9iic31mm7kch6vb"
+    },
+    "pageProps": {
+      "routeWorkspace": { "id": "cmthzpmu3015h01s66hnj3wr1", "slug": "purple-bright-coyote" },
+      "trpcState": {
+        "json": {
+          "queries": [
+            {
+              "state": {
+                "data": {
+                  "generationId": "kzbiddbo73fh4m33k1i3byev",
+                  "labContext": { "topicId": "m83w4r7zr9iic31mm7kch6vb", "stepId": "jctutenh4ssm13h0xzgalxd0" },
+                  "requestedSpec": { "targetId": "aio-krea2", "contractRevision": 7 },
+                  "descriptor": {
+                    "displayName": "Krea 2",
+                    "outputType": "IMAGE",
+                    "fields": [
+                      { "fieldId": "prompt", "type": "text", "required": true, "maxLength": 8000 },
+                      { "fieldId": "aspectRatio", "type": "select", "options": ["16:9", "1:1", "3:4"] },
+                      { "fieldId": "inputImage", "type": "image", "required": false, "maxCount": 1 }
+                    ]
+                  },
+                  "acceptedAmount": 28
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "expected": { "targetId": "aio-krea2", "revision": 7, "modality": "IMAGE", "resourceTypes": ["IMAGE"] }
+  },
+  {
+    "name": "flux2-klein-image",
+    "pageUrl": "https://moonland.ai/w/purple-bright-coyote/lab?t=flux2-topic-id",
+    "request": { "url": "https://moonland.ai/w/purple-bright-coyote/lab?t=flux2-topic-id" },
+    "pageProps": {
+      "routeWorkspace": { "id": "cmthzpmu3015h01s66hnj3wr1", "slug": "purple-bright-coyote" },
+      "activeStep": {
+        "topicId": "flux2-topic-id",
+        "stepId": "flux2-step-id",
+        "request": { "targetId": "aio-flux2-klein-9b", "contractRevision": 7 },
+        "descriptor": {
+          "name": "FLUX.2 [klein]",
+          "outputModality": "IMAGE",
+          "inputSchema": {
+            "fields": [
+              { "id": "prompt", "kind": "string", "required": true, "maxLength": 8000 },
+              { "id": "referenceImages", "kind": "image-list", "multiple": true, "maxCount": 10 },
+              { "id": "resolution", "kind": "enum", "values": [{ "value": "1k" }, { "value": "2k" }] }
+            ]
+          }
+        },
+        "estimatedPoints": 42
+      }
+    },
+    "expected": { "targetId": "aio-flux2-klein-9b", "revision": 7, "modality": "IMAGE", "resourceTypes": ["IMAGE"] }
+  },
+  {
+    "name": "minimax-h3-video",
+    "pageUrl": "https://moonland.ai/w/purple-bright-coyote/lab?t=minimax-topic-id",
+    "request": { "url": "https://moonland.ai/w/purple-bright-coyote/lab?t=minimax-topic-id" },
+    "pageProps": {
+      "routeWorkspace": { "id": "cmthzpmu3015h01s66hnj3wr1", "slug": "purple-bright-coyote" },
+      "composer": {
+        "topicId": "minimax-topic-id",
+        "stepId": "minimax-step-id",
+        "target": { "id": "minimax-h3", "contractRevision": 6, "displayName": "MiniMax H3", "outputType": "VIDEO" },
+        "contract": {
+          "revision": 6,
+          "fields": [
+            { "id": "prompt", "type": "string", "required": true, "maxLength": 6000 },
+            { "id": "referenceImages", "type": "image", "multiple": true, "maxCount": 10, "purposes": ["START_END_FRAME", "REFERENCE"] },
+            { "id": "referenceVideo", "type": "video", "maxCount": 1 },
+            { "id": "referenceAudio", "type": "audio", "maxCount": 1 },
+            { "id": "duration", "type": "integer", "minimum": 5, "maximum": 15, "step": 1 }
+          ]
+        },
+        "price": 626
+      }
+    },
+    "expected": { "targetId": "minimax-h3", "revision": 6, "modality": "VIDEO", "resourceTypes": ["IMAGE", "VIDEO", "AUDIO"] }
+  }
+]

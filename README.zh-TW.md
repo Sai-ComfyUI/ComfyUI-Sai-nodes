@@ -49,6 +49,8 @@ python_embeded\python.exe -m pip install -r ComfyUI\custom_nodes\ComfyUI-Sai-nod
 - **LUA FLUX**：載入官方模型，對 FLUX.1 latent 進行 x2／x4 放大。
 - **MyTimeMachine**：FFHQ 人臉對齊與貼回、一般及個人化年齡轉換、個人化訓練。
 - **Labeled Image Collage Ψ**：製作附標籤、可換行與儲存版型的比較拼貼。
+- **Moonland Bridge**：透過已配對且登入的瀏覽器分頁，唯讀解析既有 Lab 工具 contract，
+  並重用或上傳圖片資源；不匯出 Cookie，也不會提交生成。
 
 完整節點清單與接法請看[使用說明](docs/USAGE.md)。個別節點的詳細輸入輸出文件位於
 [`docs/`](docs/)；第三方程式碼與模型授權見

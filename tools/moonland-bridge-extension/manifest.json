@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Moonland Bridge for ComfyUI",
+  "version": "0.7.6",
+  "description": "Connects an authenticated Moonland tab to ComfyUI for allowlisted resource actions without exporting cookies.",
+  "permissions": ["storage", "tabs", "scripting"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "host_permissions": ["https://moonland.ai/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    { "matches": ["https://moonland.ai/*"], "js": ["page_query_observer.js"], "run_at": "document_start", "world": "MAIN" },
+    { "matches": ["https://moonland.ai/*"], "js": ["contract_resolver.js", "content.js"], "run_at": "document_idle" }
+  ],
+  "action": { "default_title": "Moonland Bridge", "default_popup": "popup.html" }
+}

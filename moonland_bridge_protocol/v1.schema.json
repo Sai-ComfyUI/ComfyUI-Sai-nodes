@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sai.local/moonland-bridge/v1.schema.json",
+  "title": "Moonland Browser Bridge Protocol v1",
+  "oneOf": [
+    { "$ref": "#/$defs/hello" },
+    { "$ref": "#/$defs/heartbeat" },
+    { "$ref": "#/$defs/actionRequest" },
+    { "$ref": "#/$defs/actionResult" }
+  ],
+  "$defs": {
+    "moonlandStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authenticated"],
+      "properties": {
+        "authenticated": { "type": "boolean" },
+        "pageUrl": { "type": "string", "minLength": 1, "maxLength": 2048 },
+        "workspaceId": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "workspaceSlug": { "type": "string", "minLength": 1, "maxLength": 128 }
+      }
+    },
+    "hello": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocolVersion", "bridgeId", "extensionVersion", "pairingCode", "moonland"],
+      "properties": {
+        "type": { "const": "hello" },
+        "protocolVersion": { "const": 1 },
+        "bridgeId": { "type": "string", "minLength": 8, "maxLength": 128 },
+        "extensionVersion": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "pairingCode": { "type": "string", "pattern": "^[0-9]{6}$" },
+        "moonland": { "$ref": "#/$defs/moonlandStatus" }
+      }
+    },
+    "heartbeat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocolVersion", "bridgeId", "extensionVersion", "moonland"],
+      "properties": {
+        "type": { "const": "heartbeat" },
+        "protocolVersion": { "const": 1 },
+        "bridgeId": { "type": "string", "minLength": 8, "maxLength": 128 },
+        "extensionVersion": { "type": "string", "minLength": 1, "maxLength": 32 },
+        "moonland": { "$ref": "#/$defs/moonlandStatus" }
+      }
+    },
+    "actionRequest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocolVersion", "requestId", "action", "payload"],
+      "properties": {
+        "type": { "const": "actionRequest" },
+        "protocolVersion": { "const": 1 },
+        "requestId": { "type": "string", "format": "uuid" },
+        "action": { "enum": ["resource.ensureImage", "tool.resolveContract"] },
+        "payload": { "type": "object" }
+      }
+    },
+    "actionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "protocolVersion", "requestId", "ok"],
+      "properties": {
+        "type": { "const": "actionResult" },
+        "protocolVersion": { "const": 1 },
+        "requestId": { "type": "string", "format": "uuid" },
+        "ok": { "type": "boolean" },
+        "result": { "type": "object" },
+        "error": { "type": "string", "minLength": 1, "maxLength": 2048 }
+      }
+    }
+  }
+}

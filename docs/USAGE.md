@@ -3,6 +3,20 @@
 All nodes are registered under the `Sai` category. Search for the `Ψ` suffix to
 find this package's public nodes.
 
+## Moonland bridge
+
+Pair the unpacked Moonland Bridge extension from **Sai → Moonland Bridge** and
+keep both the target Moonland page and ComfyUI open in the same browser.
+
+**Moonland Resolve Tool Ψ** accepts an existing Lab topic or generation URL and
+returns a versioned `MOONLAND_TOOL_CONTRACT`. Resolution is read-only and only
+uses the exact signed-in Moonland tab for that URL. It does not submit a
+generation, upload media, or expose browser credentials. See
+[the resolver reference](MoonlandResolveTool_Sai.md).
+
+The image resource nodes reuse or upload PNG, JPEG, and WebP content through the
+same credential-free bridge. Video and audio transport are not yet implemented.
+
 ## Conditioning
 
 ### Multi Reference Latent Ψ
