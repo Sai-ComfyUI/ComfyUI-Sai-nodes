@@ -12,7 +12,7 @@
 - Store durable specifications, decisions, plans, and checklists in `Docs/`.
 - Store execution records and verification evidence in `Tasks/`.
 - Name tasks `TNNN - <natural-language title>.md` and documents `DNNN - <natural-language title>.md`; Task and Doc IDs use independent sequences.
-- Follow `_Habits/Attribute Items.md` and `_Habits/Collaboration settings.md` for properties, status, verification, and handoff conventions.
+- Follow `_Habits/Registry/Attribute Items.md` and `_Habits/Collaboration settings.md` for properties, status, verification, and handoff conventions.
 - Use `Docs/D001 - ComfyUI Custom Node 通用開發規範.md` as the project development baseline.
 - Update `Project Home.md` when milestones, architecture, or the active focus changes.
 - Each Task should capture the goal, decisions, changed files, developer verification, user acceptance when needed, and follow-up items.
